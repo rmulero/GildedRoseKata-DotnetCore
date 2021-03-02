@@ -13,93 +13,64 @@ namespace csharpcore
         private static int BACKSTAGE_INCREASE_QUALITY_BY_TWO_SELL_IN_THRESHOLD = 10;
         private static int BACKSTAGE_INCREASE_QUALITY_BY_THREE_SELL_IN_THRESHOLD = 5;
 
-        private static int MAX_QUALITY = 50;
-        private static int MIN_QUALITY = 0;
-
-        IList<Item> Items;
-        public GildedRose(IList<Item> Items)
+        IList<UpdatableItem> Items;
+        public GildedRose(IList<UpdatableItem> Items)
         {
             this.Items = Items;
         }
 
         public void UpdateQuality()
         {
-            foreach (Item item in Items)
+            foreach (UpdatableItem item in Items)
             {
-                if (item.Name == SULFURAS)
+                if (item.Name() == SULFURAS)
                 {
                     continue;
                 }
-                else if (item.Name == AGED_BRIE)
+                else if (item.Name() == AGED_BRIE)
                 {
-                    increaseQuality(item);
+                    item.IncreaseQuality();
 
-                    decreaseSellIn(item);
+                    item.DecreaseSellIn();
 
-                    if (item.SellIn < SELL_IN_EXPIRATION)
+                    if (item.SellIn() < SELL_IN_EXPIRATION)
                     {
-                        increaseQuality(item);
+                        item.IncreaseQuality();
                     }
                 }
-                else if (item.Name == BACKSTAGE_PASSES)
+                else if (item.Name() == BACKSTAGE_PASSES)
                 {
-                    increaseQuality(item);
+                    item.IncreaseQuality();
 
-                    if (item.SellIn <= BACKSTAGE_INCREASE_QUALITY_BY_TWO_SELL_IN_THRESHOLD)
+                    if (item.SellIn() <= BACKSTAGE_INCREASE_QUALITY_BY_TWO_SELL_IN_THRESHOLD)
                     {
-                        increaseQuality(item);
+                        item.IncreaseQuality();
                     }
                     
-                    if (item.SellIn <= BACKSTAGE_INCREASE_QUALITY_BY_THREE_SELL_IN_THRESHOLD)
+                    if (item.SellIn() <= BACKSTAGE_INCREASE_QUALITY_BY_THREE_SELL_IN_THRESHOLD)
                     {
-                        increaseQuality(item);
+                        item.IncreaseQuality();
                     }
 
-                    decreaseSellIn(item);
+                    item.DecreaseSellIn();
 
-                    if (item.SellIn < SELL_IN_EXPIRATION)
+                    if (item.SellIn() < SELL_IN_EXPIRATION)
                     {
-                        setLowestQuality(item);
+                        item.SetLowestQuality();
                     }
                 }
                 else
                 {
-                    decreaseQuality(item);
+                    item.DecreaseQuality();
 
-                    decreaseSellIn(item);
+                    item.DecreaseSellIn();
 
-                    if (item.SellIn < SELL_IN_EXPIRATION)
+                    if (item.SellIn() < SELL_IN_EXPIRATION)
                     {
-                        decreaseQuality(item);
+                        item.DecreaseQuality();
                     }
                 }
             }
-        }
-
-        private void increaseQuality(Item item)
-        {
-            if (item.Quality < MAX_QUALITY)
-            {
-                item.Quality = item.Quality + 1;
-            }
-        }
-
-        private void decreaseQuality(Item item)
-        {
-            if (item.Quality > MIN_QUALITY)
-            {
-                item.Quality = item.Quality - 1;
-            }
-        }
-
-        private void setLowestQuality(Item item)
-        {
-            item.Quality = item.Quality - item.Quality;
-        }
-
-        private void decreaseSellIn(Item item)
-        {
-            item.SellIn = item.SellIn - 1;
         }
     }
 }
