@@ -20,69 +20,74 @@ namespace csharpcore
                 }
                 else if (Items[i].Name == "Aged Brie")
                 {
-                    if (Items[i].Quality < 50)
-                    {
-                        Items[i].Quality = Items[i].Quality + 1;
-                    }
+                    increaseQuality(Items[i]);
 
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                    decreaseSellIn(Items[i]);
 
                     if (Items[i].SellIn < 0)
                     {
-                        if (Items[i].Quality < 50)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
+                        increaseQuality(Items[i]);
                     }
                 }
                 else if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    if (Items[i].Quality < 50)
+                    increaseQuality(Items[i]);
+
+                    if (Items[i].SellIn < 11)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
-
-                        if (Items[i].SellIn < 11)
-                        {
-                            if (Items[i].Quality < 50)
-                            {
-                                Items[i].Quality = Items[i].Quality + 1;
-                            }
-                        }
-
-                        if (Items[i].SellIn < 6)
-                        {
-                            if (Items[i].Quality < 50)
-                            {
-                                Items[i].Quality = Items[i].Quality + 1;
-                            }
-                        }
+                        increaseQuality(Items[i]);
+                    }
+                    
+                    if (Items[i].SellIn < 6)
+                    {
+                        increaseQuality(Items[i]);
                     }
 
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                    decreaseSellIn(Items[i]);
 
                     if (Items[i].SellIn < 0)
                     {
-                        Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                        setLowestQuality(Items[i]);
                     }
                 }
                 else
                 {
-                    if (Items[i].Quality > 0)
-                    {
-                        Items[i].Quality = Items[i].Quality - 1;
-                    }
+                    decreaseQuality(Items[i]);
 
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                    decreaseSellIn(Items[i]);
 
                     if (Items[i].SellIn < 0)
                     {
-                        if (Items[i].Quality > 0)
-                        {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
+                        decreaseQuality(Items[i]);
                     }
                 }
             }
+        }
+
+        private void increaseQuality(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality = item.Quality + 1;
+            }
+        }
+
+        private void decreaseQuality(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                item.Quality = item.Quality - 1;
+            }
+        }
+
+        private void setLowestQuality(Item item)
+        {
+            item.Quality = item.Quality - item.Quality;
+        }
+
+        private void decreaseSellIn(Item item)
+        {
+            item.SellIn = item.SellIn - 1;
         }
     }
 }
