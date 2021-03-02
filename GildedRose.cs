@@ -24,53 +24,53 @@ namespace csharpcore
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach (Item item in Items)
             {
-                if (Items[i].Name == SULFURAS)
+                if (item.Name == SULFURAS)
                 {
                     continue;
                 }
-                else if (Items[i].Name == AGED_BRIE)
+                else if (item.Name == AGED_BRIE)
                 {
-                    increaseQuality(Items[i]);
+                    increaseQuality(item);
 
-                    decreaseSellIn(Items[i]);
+                    decreaseSellIn(item);
 
-                    if (Items[i].SellIn < SELL_IN_EXPIRATION)
+                    if (item.SellIn < SELL_IN_EXPIRATION)
                     {
-                        increaseQuality(Items[i]);
+                        increaseQuality(item);
                     }
                 }
-                else if (Items[i].Name == BACKSTAGE_PASSES)
+                else if (item.Name == BACKSTAGE_PASSES)
                 {
-                    increaseQuality(Items[i]);
+                    increaseQuality(item);
 
-                    if (Items[i].SellIn <= BACKSTAGE_INCREASE_QUALITY_BY_TWO_SELL_IN_THRESHOLD)
+                    if (item.SellIn <= BACKSTAGE_INCREASE_QUALITY_BY_TWO_SELL_IN_THRESHOLD)
                     {
-                        increaseQuality(Items[i]);
+                        increaseQuality(item);
                     }
                     
-                    if (Items[i].SellIn <= BACKSTAGE_INCREASE_QUALITY_BY_THREE_SELL_IN_THRESHOLD)
+                    if (item.SellIn <= BACKSTAGE_INCREASE_QUALITY_BY_THREE_SELL_IN_THRESHOLD)
                     {
-                        increaseQuality(Items[i]);
+                        increaseQuality(item);
                     }
 
-                    decreaseSellIn(Items[i]);
+                    decreaseSellIn(item);
 
-                    if (Items[i].SellIn < SELL_IN_EXPIRATION)
+                    if (item.SellIn < SELL_IN_EXPIRATION)
                     {
-                        setLowestQuality(Items[i]);
+                        setLowestQuality(item);
                     }
                 }
                 else
                 {
-                    decreaseQuality(Items[i]);
+                    decreaseQuality(item);
 
-                    decreaseSellIn(Items[i]);
+                    decreaseSellIn(item);
 
-                    if (Items[i].SellIn < SELL_IN_EXPIRATION)
+                    if (item.SellIn < SELL_IN_EXPIRATION)
                     {
-                        decreaseQuality(Items[i]);
+                        decreaseQuality(item);
                     }
                 }
             }
