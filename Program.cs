@@ -10,16 +10,16 @@ namespace csharpcore
             Console.WriteLine("OMGHAI!");
 
             IList<UpdatableItem> Items = new List<UpdatableItem>{
-                new StandardItem("+5 Dexterity Vest", 10, 20),
-                new AgedItem("Aged Brie", 2, 0),
-                new StandardItem("Elixir of the Mongoose", 5, 7),
-                new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80),
-                new LegendaryItem("Sulfuras, Hand of Ragnaros", -1, 80),
-                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+                UpdatableItemFactory.CreateItem(ItemType.STANDARD, "+5 Dexterity Vest", 10, 20),
+                UpdatableItemFactory.CreateItem(ItemType.AGED, "Aged Brie", 2, 0),
+                UpdatableItemFactory.CreateItem(ItemType.STANDARD, "Elixir of the Mongoose", 5, 7),
+                UpdatableItemFactory.CreateItem(ItemType.LEGENDARY, "Sulfuras, Hand of Ragnaros", 0, 80),
+                UpdatableItemFactory.CreateItem(ItemType.LEGENDARY, "Sulfuras, Hand of Ragnaros", -1, 80),
+                UpdatableItemFactory.CreateItem(ItemType.BACKSTAGE, "Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                UpdatableItemFactory.CreateItem(ItemType.BACKSTAGE, "Backstage passes to a TAFKAL80ETC concert", 10, 49),
+                UpdatableItemFactory.CreateItem(ItemType.BACKSTAGE, "Backstage passes to a TAFKAL80ETC concert", 5, 49),
 				// this conjured item does not work properly yet
-				new StandardItem("Conjured Mana Cake", 3, 6)
+				UpdatableItemFactory.CreateItem(ItemType.STANDARD, "Conjured Mana Cake", 3, 6)
             };
 
             var app = new GildedRose(Items);
