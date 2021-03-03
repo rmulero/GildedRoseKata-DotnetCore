@@ -29,9 +29,9 @@ namespace csharpcore
             {
                 Console.WriteLine("-------- day " + i + " --------");
                 Console.WriteLine("name, sellIn, quality");
-                for (var j = 0; j < Items.Count; j++)
+                foreach (UpdatableItem item in Items)
                 {
-                    System.Console.WriteLine(Items[j].Name() + ", " + Items[j].SellIn() + ", " + Items[j].Quality());
+                    System.Console.WriteLine(item);
                 }
                 Console.WriteLine("");
                 app.UpdateQuality();

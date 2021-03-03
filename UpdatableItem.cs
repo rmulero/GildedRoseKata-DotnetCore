@@ -30,6 +30,11 @@ namespace csharpcore
             return item.SellIn;
         }
 
+        public override string ToString()
+        {
+            return Name() + ", " + SellIn() + ", " + Quality();
+        }
+
         protected void IncreaseQuality()
         {
             if (item.Quality < MAX_QUALITY)
