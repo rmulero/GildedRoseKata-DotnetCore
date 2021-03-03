@@ -10,7 +10,7 @@ namespace csharpcore
         public void SellInDegradesByOneAfterOneDay()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("foo", 1, 10 )
+                new StandardItem("foo", 1, 10 )
             };
 
             GildedRose app = new GildedRose(Items);
@@ -22,7 +22,7 @@ namespace csharpcore
         public void QualityDegradesByOneAfterOneDay()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("foo", 1, 10 )
+                new StandardItem("foo", 1, 10 )
             };
 
             GildedRose app = new GildedRose(Items);
@@ -34,7 +34,7 @@ namespace csharpcore
         public void QualityDegradesTwiceAsFastWhenSellByDateHasPassed()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("foo", 0, 10 )
+                new StandardItem("foo", 0, 10 )
             };
 
             GildedRose app = new GildedRose(Items);
@@ -46,7 +46,7 @@ namespace csharpcore
         public void QualityOfAnItemIsNeverNegative()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("foo", 0, 0 )
+                new StandardItem("foo", 0, 0 )
             };
 
             GildedRose app = new GildedRose(Items);
@@ -58,7 +58,7 @@ namespace csharpcore
         public void AgedBrieIncreasesQualityTheOlderItGets()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("Aged Brie", 1, 0)
+                new AgedItem("Aged Brie", 1, 0)
             };
 
             GildedRose app = new GildedRose(Items);
@@ -70,7 +70,7 @@ namespace csharpcore
         public void AgedBrieIncreasesQualityTwiceAsFastWhenSellByDateHasPassed()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("Aged Brie", 0, 0 )
+                new AgedItem("Aged Brie", 0, 0 )
             };
 
             GildedRose app = new GildedRose(Items);
@@ -82,7 +82,7 @@ namespace csharpcore
         public void QualityOfAnItemIsNeverMoreThan50()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("Aged Brie", 0, 50)
+                new AgedItem("Aged Brie", 0, 50)
             };
 
             GildedRose app = new GildedRose(Items);
@@ -94,7 +94,7 @@ namespace csharpcore
         public void SulfurasQualityAndSellInValuesAreNotAltered()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("Sulfuras, Hand of Ragnaros", 0, 80)
+                new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80)
             };
 
             GildedRose app = new GildedRose(Items);
@@ -107,7 +107,7 @@ namespace csharpcore
         public void BackstageIncreasesQualityByOneIfMoreThanTenDaysRemaining()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("Backstage passes to a TAFKAL80ETC concert", 11, 0)
+                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 11, 0)
             };
 
             GildedRose app = new GildedRose(Items);
@@ -119,7 +119,7 @@ namespace csharpcore
         public void BackstageIncreasesQualityByTwoIfItHasToBeSoldInTenDaysOrLess()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("Backstage passes to a TAFKAL80ETC concert", 10, 0)
+                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 10, 0)
             };
 
             GildedRose app = new GildedRose(Items);
@@ -131,7 +131,7 @@ namespace csharpcore
         public void BackstageIncreasesQualityByThreeIfItHasToBeSoldInFiveDaysOrLess()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("Backstage passes to a TAFKAL80ETC concert", 5, 0)
+                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 5, 0)
             };
 
             GildedRose app = new GildedRose(Items);
@@ -143,7 +143,7 @@ namespace csharpcore
         public void BackstageQualityDropsToZeroAfterTheConcert()
         {
             IList<UpdatableItem> Items = new List<UpdatableItem> {
-                new UpdatableItem("Backstage passes to a TAFKAL80ETC concert", 0, 50)
+                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 0, 50)
             };
 
             GildedRose app = new GildedRose(Items);

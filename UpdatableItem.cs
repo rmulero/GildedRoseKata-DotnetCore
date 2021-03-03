@@ -1,7 +1,8 @@
 namespace csharpcore
 {
-    public class UpdatableItem
+    public abstract class UpdatableItem
     {
+        protected static int SELL_IN_EXPIRATION = 0;
         private static int MAX_QUALITY = 50;
         private static int MIN_QUALITY = 0;
 
@@ -11,6 +12,8 @@ namespace csharpcore
         {
             item = new Item{ Name = ItemName, SellIn = ItemSellIn, Quality = ItemQuality };
         }
+
+        public abstract void Update();
 
         public string Name()
         {
@@ -27,7 +30,7 @@ namespace csharpcore
             return item.SellIn;
         }
 
-        public void IncreaseQuality()
+        protected void IncreaseQuality()
         {
             if (item.Quality < MAX_QUALITY)
             {
@@ -35,7 +38,7 @@ namespace csharpcore
             }
         }
 
-        public void DecreaseQuality()
+        protected void DecreaseQuality()
         {
             if (item.Quality > MIN_QUALITY)
             {
@@ -43,12 +46,12 @@ namespace csharpcore
             }
         }
 
-        public void SetLowestQuality()
+        protected void SetLowestQuality()
         {
             item.Quality = item.Quality - item.Quality;
         }
 
-        public void DecreaseSellIn()
+        protected void DecreaseSellIn()
         {
             item.SellIn = item.SellIn - 1;
         }
