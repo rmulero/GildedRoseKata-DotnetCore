@@ -12,6 +12,8 @@ namespace csharpcore
                     return new BackstageItem(Name, SellIn, Quality);
                 case ItemType.LEGENDARY:
                     return new LegendaryItem(Name, SellIn, Quality);
+                case ItemType.CONJURED:
+                    return new ConjuredItem(Name, SellIn, Quality);
                 case ItemType.STANDARD:
                 default:
                     return new StandardItem(Name, SellIn, Quality);

@@ -5,6 +5,7 @@ namespace csharpcore
         STANDARD,
         AGED,
         BACKSTAGE,
-        LEGENDARY
+        LEGENDARY,
+        CONJURED
     }
 }

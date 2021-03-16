@@ -150,5 +150,19 @@ namespace csharpcore
             app.UpdateQuality();
             Assert.Equal(0, Items[0].Quality());
         }
+
+        [Fact]
+        public void ConjuredItemDecreaseQualityTwiceAsFastAsNormalItems()
+        {
+            IList<UpdatableItem> Items = new List<UpdatableItem> {
+                UpdatableItemFactory.CreateItem(ItemType.CONJURED, "Conjured item", 1, 50),
+                UpdatableItemFactory.CreateItem(ItemType.CONJURED, "Conjured item", 0, 50)
+            };
+
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(48, Items[0].Quality());
+            Assert.Equal(46, Items[1].Quality());
+        }
     }
 }
