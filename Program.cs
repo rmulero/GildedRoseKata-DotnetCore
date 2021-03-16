@@ -18,8 +18,7 @@ namespace csharpcore
                 UpdatableItemFactory.CreateItem(ItemType.BACKSTAGE, "Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 UpdatableItemFactory.CreateItem(ItemType.BACKSTAGE, "Backstage passes to a TAFKAL80ETC concert", 10, 49),
                 UpdatableItemFactory.CreateItem(ItemType.BACKSTAGE, "Backstage passes to a TAFKAL80ETC concert", 5, 49),
-				// this conjured item does not work properly yet
-				UpdatableItemFactory.CreateItem(ItemType.STANDARD, "Conjured Mana Cake", 3, 6)
+				UpdatableItemFactory.CreateItem(ItemType.CONJURED, "Conjured Mana Cake", 3, 6)
             };
 
             var app = new GildedRose(Items);
